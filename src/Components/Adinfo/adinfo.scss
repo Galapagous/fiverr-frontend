@@ -1,0 +1,23 @@
+.adinfo {
+  .adinfo-container {
+    .top {
+      display: flex;
+      gap: 20px;
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      span {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: black;
+        font-weight: 600;
+      }
+    }
+    span {
+      font-size: 1.2rem;
+      color: grey;
+    }
+  }
+}

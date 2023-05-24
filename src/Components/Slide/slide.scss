@@ -1,0 +1,23 @@
+.slide{
+  width: 95%;
+  padding: 2rem 0rem;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .slide-container{
+    width: 100%;
+    height: 100%;
+    .carousel-prev, .carousel-next{
+      background-color: rgb(207, 210, 211);
+      border: 0.5px solid rgb(129, 1, 1);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}

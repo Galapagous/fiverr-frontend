@@ -1,0 +1,44 @@
+.gigsecond {
+  padding: 150px 0px;
+  .gigsecond-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 80%;
+    margin: auto;
+    .gigsecond-card {
+      width: 400px;
+      height: 300px;
+      margin-bottom: 20px;
+      img {
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
+      }
+      .gig-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 5px;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        h1 {
+          font-size: 1.5rem;
+        }
+        span {
+          font-size: 1rem;
+        }
+        a{
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

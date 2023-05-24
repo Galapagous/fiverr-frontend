@@ -1,0 +1,45 @@
+.add {
+  margin: 100px 0px;
+  .add-container {
+    width: 80%;
+    // border: 1px solid crimson;
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 50px;
+    // .left-add {
+    flex: 1;
+    label {
+      display: block;
+      font-size: 1.5rem;
+      color: grey;
+      padding: 20px 0px;
+    }
+    input {
+      padding: 20px 0px;
+      width: 600px;
+      font-size: 1.4rem;
+      outline: none;
+      border: 1px solid grey;
+    }
+    textarea {
+      width: 600px;
+      height: 200px;
+      padding: 20px 0px;
+      font-size: 1.4rem;
+      border: 1px solid grey;
+      outline: none;
+    }
+    button {
+      width: 600px;
+      padding: 10px 0px;
+      font-size: 1.4rem;
+      background-color: green;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+    // }
+  }
+}

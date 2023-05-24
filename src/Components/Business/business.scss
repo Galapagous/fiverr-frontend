@@ -1,0 +1,48 @@
+.business {
+  padding: 100px 0px;
+  background-color: rgb(1, 1, 14);
+  color: wheat;
+  .business-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    .left-business {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      h1 {
+        font-size: 2rem;
+      }
+      span {
+        font-size: 1.2rem;
+      }
+      .business-items{
+        .adinfo{
+          .adinfo-container{
+            span{
+              color: white;
+            }
+          }
+        }
+      }
+      button {
+        padding: 10px 15px;
+        background-color: rgb(102, 155, 22);
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+    }
+    .right-business {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
