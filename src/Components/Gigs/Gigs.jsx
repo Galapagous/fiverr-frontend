@@ -6,7 +6,7 @@ function Gigs(props) {
   return (
     <div className="gigs">
             <div className="gig-card">
-              <Link to="/gigs/1">
+              <Link to="/gig">
               <div className="gig-info">
                 <p>{props.desc}</p>
                 <h1>{props.title}</h1>

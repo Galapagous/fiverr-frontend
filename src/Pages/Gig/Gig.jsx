@@ -1,26 +1,42 @@
-import React, { useState } from "react"
-import gig_page from "../../Assets/gig_page"
-import service from "../../Components/Assets/service.jpg"
-import like from "../../Components/Assets/like.png"
-import game from "../../Components/Assets/game.png"
+import React, { useRef, useState } from "react"
 import "./gig.scss"
-import { Link } from "react-router-dom"
+import { useLocation } from "react-router-dom"
+import { useQuery } from "@tanstack/react-query"
+import newRequest from "../../utils/newRequest"
+import GigData from "../../Components/GigData/GigData"
 
 function Gig() {
   const [viewSort, setViewSort] = useState(false)
   const [sort, setSort] = useState("Newest")
+  const {search} = useLocation()
+  const minRef = useRef()
+  const maxRef = useRef()
+
+  const { isLoading: gigPending, error:gigError, data:gigData, refetch: refetchGig } = useQuery({
+    queryKey: ['gigData'],
+    queryFn: () => newRequest.get(`/gig/all?${search}&min=${minRef.current.value}&max=${maxRef.current.value}`).then((res)=>{
+      return res.data
+    }),
+  });
+  const handleApply = (e)=>{
+    e.preventDefault()
+    refetchGig()
+  }
+
   return (
     <div className="gigpage">
       <div className="gigpage-container">
-        <h2>MUSAA > GRAPHIC DESIGN ></h2>
+        <h2>MUSAA > GRAPHIC DESIGN > </h2>
         <h1>AI Artist</h1>
         <h3>Explore the boundaries of AI and art with Musaa AI artist</h3>
         <div className="barner">
           <div className="left-barner">
+            <form onSubmit={handleApply}>
             <span>Budget</span>
-            <input type="text" placeholder="Min" />
-            <input type="text" placeholder="Max" />
+            <input type="text" ref={minRef} placeholder="Min" />
+            <input type="text" ref={maxRef} placeholder="Max" />
             <button>Apply</button>
+            </form>
           </div>
           <div className="right-barner">
             <h3>Sort By:</h3>
@@ -54,27 +70,9 @@ function Gig() {
           </div>
         </div>
         <div className="category-display">
-          {gig_page.map((item) => {
+          {gigPending ? 'Loading' : gigError ? 'Something Went Wrong' : gigData.map((item) => {
             return (
-              <div key={item.id} className="gig-card">
-                <Link to="/gigs/1"><img src={service} alt="dontknow" /></Link>
-                <div className="info">
-                  <img src={item.profile} alt="profile" />
-                  <span>{item.username}</span>
-                </div>
-                <span>{item.desc}</span>
-                <div className="rating">
-                  <img src={like} alt="rating" />
-                  <span>{item.star}</span>
-                </div>
-                <div className="price-section">
-                  <img src={game} alt="heart" />
-                  <div className="price">
-                    <span>Starting at</span>
-                    <span>${item.price}</span>
-                  </div>
-                </div>
-              </div>
+              <GigData item={item}/>
             )
           })}
         </div>

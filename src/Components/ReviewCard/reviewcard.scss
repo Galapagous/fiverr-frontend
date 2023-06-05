@@ -29,6 +29,13 @@
     }
     span {
       margin: 10px 0px;
+      display: flex;
+      align-items: center;
+      img{
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
     }
     p {
       margin: 10px 0px;

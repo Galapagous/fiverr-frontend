@@ -2,20 +2,29 @@ import React from "react"
 import Profile from "../../Components/Assets/profile.jpg"
 import like from "../../Components/Assets/like.png"
 import "./reviewcard.scss"
+import newRequest from "../../utils/newRequest";
+import { useQuery } from "@tanstack/react-query";
+import Star from '../../Components/Assets/star.png'
 
-function ReviewCard() {
+function ReviewCard({info}) {
+  const { isLoading, error, data} = useQuery({
+    queryKey: ['gigOwner'],
+    queryFn: () => newRequest.get(`/user/single/${info.UserId}`).then((res)=>{
+      return res.data
+    })
+  });
   return (
     <div className="review">
       <div className="review-container">
         <div className="top">
           <img src={Profile} alt="profile" />
           <div className="item">
-            <h3>Musa Mo</h3>
-            <span>Nigeria</span>
+            <h3>{data.username}</h3>
+            <span>{data.country}</span>
           </div>
         </div>
-        <span>ratings</span>
-        <p>So far, we haven’t done anything that couldn’t be done just as easily without Express, but already Express is providing us some functionality that isn’t immediately obvious. Remember in the previous chapter how we had to normalize req.url to determine what resource was being requested? We had to manually strip off the querystring and the trailing slash, and convert to lowercase.</p>
+        <span>{info.Star} <img src={Star} alt="image"/></span>
+        <p>{info.Desc}</p>
         <div className="bottom">
           <span>Helpful?</span>
           <img src={like} alt="like" />
